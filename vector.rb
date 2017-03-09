@@ -12,12 +12,17 @@ class Vector
     x1 = @x + vector.x
     y1 = @y + vector.y
     z1 = @z + vector.z
-    res = new Vector(x1,y1,z1)
-    return res
+    res = Vector.new(x1,y1,z1)
+    
   end
   def resta_vector(vector)
     x1 = @x - vector.x
     y1 = @y - vector.y
     z1 = @z - vector.z
-    res = new Vector(x1,y1,z1)
+    res = Vector.new(x1,y1,z1)
   end
+  def show
+    puts "(#{@x},#{@y},#{z})"
+  end
+
+end
