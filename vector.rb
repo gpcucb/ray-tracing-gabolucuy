@@ -13,7 +13,7 @@ class Vector
     y1 = @y + vector.y
     z1 = @z + vector.z
     res = Vector.new(x1,y1,z1)
-    
+
   end
   def resta_vector(vector)
     x1 = @x - vector.x
@@ -24,5 +24,19 @@ class Vector
   def show
     puts "(#{@x},#{@y},#{z})"
   end
-
+  def  modulo(vector)
+    return Math.sqrt(vector.x*vector.x + vector.y*vector.y + vector.z*vector.z)
+  end
+  def productoVectorial(vector)
+    i = (@y * vector.z) - (@z * vector.y)
+    j = (@z * vector.x) - (@x * vector.z)
+    k = (@x * vector.y) - (@y * vector.x)
+    return Vector.new(i, j, k)
+  end
+  def productoEscalar(vector)
+    i = @x + vector.x
+    j = @y + vector.y
+    k = @z + vector.z
+    return (i + j + k).to_f
+  end
 end
