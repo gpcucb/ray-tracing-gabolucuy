@@ -24,8 +24,8 @@ class Vector
   def show
     puts "(#{@x},#{@y},#{z})"
   end
-  def  modulo(vector)
-    return Math.sqrt(vector.x*vector.x + vector.y*vector.y + vector.z*vector.z)
+  def  modulo()
+    return Math.sqrt(@x*@x + @y*@y + @z*@z)
   end
   def productoVectorial(vector)
     i = (@y * vector.z) - (@z * vector.y)
@@ -39,4 +39,7 @@ class Vector
     k = @z + vector.z
     return (i + j + k).to_f
   end
+  def num_product(num)
+		return Vector.new(@x*num, @y*num, @z*num)
+	end
 end
