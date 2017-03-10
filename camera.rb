@@ -12,9 +12,9 @@ class Camera
 
 	def vectorW
 		d = @e.resta_vector(@center)
-		x = @e.x / @e.modulo
-		y = @e.y / @e.modulo
-		z = @e.z / @e.modulo
+		x = d.x / d.modulo
+		y = d.y / d.modulo
+		z = d.z / d.modulo
 		return Vector.new(x,y,z)
 	end
 
@@ -35,8 +35,8 @@ class Camera
 			b = -t
 			r = (((nx.to_f * t) / ny.to_f)).to_f
 			l = -r
-			u = l +( (r - l)*(i+0.5) ) / nx
-			v= b + ( (t-b)*(j+0.5) ) / ny
+			u = l + ((r - l) * (i + 0.5) ) / nx
+			v = b + ((t - b) * (j + 0.5) ) / ny
 			dw = vectorW.num_product(-@df)
 			uu = (vectorU(vectorW)).num_product(u)
 			vv = (vectorV(vectorW,vectorU(vectorW))).num_product(v)
