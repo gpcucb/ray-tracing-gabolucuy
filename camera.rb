@@ -6,8 +6,8 @@ class Camera
 		@e = e #vector
 		@center = center #vector
 		@up = up #vector
-		@fov = fov #escalar
-		@df = df #escalar
+		@fov = fov.to_f #escalar
+		@df = df.to_f #escalar
 	end
 
 	def vectorW
@@ -33,7 +33,7 @@ class Camera
 	def calcularDistancia(i, j, nx, ny)
 			t = df * Math::tan(@fov / 2).to_f
 			b = -t
-			r = (t * nx) / ny.to_f
+			r = (((nx.to_f * t) / ny.to_f)).to_f
 			l = -r
 			u = l +( (r - l)*(i+0.5) ) / nx
 			v= b + ( (t-b)*(j+0.5) ) / ny
