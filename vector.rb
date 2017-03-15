@@ -34,9 +34,9 @@ class Vector
     return Vector.new(i, j, k)
   end
   def productoEscalar(vector)
-    i = @x + vector.x
-    j = @y + vector.y
-    k = @z + vector.z
+    i = @x * vector.x
+    j = @y * vector.y
+    k = @z * vector.z
     return (i + j + k).to_f
   end
   def num_product(num)
