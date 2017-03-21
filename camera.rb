@@ -11,18 +11,18 @@ class Camera
 	end
 
 	def vectorW
-		d = @center.resta_vector(@eye)
+		d = @eye.resta_vector(@center)
 		x = d.x / d.modulo
 		y = d.y / d.modulo
 		z = d.z / d.modulo
-		return Vector.new(-x,-y,-z)
+		return Vector.new(x,y,z)
 	end
 
 	def vectorU(vectorW)
 		prod = @up.productoVectorial(vectorW)
-		x = prod.x / @eye.modulo
-		y = prod.y / @eye.modulo
-		z = prod.z / @eye.modulo
+		y = prod.y / prod.modulo
+		z = prod.z / prod.modulo
+		x = prod.x / prod.modulo
 		return Vector.new(x,y,z)
 	end
 	def vectorV(vectorW,vectorU)
@@ -30,7 +30,7 @@ class Camera
 	end
 
 	def calcularDistancia(i, j, nx, ny)
-			t = df * Math::tan(@fov / 2).to_f
+			t = @df * Math::tan(@fov / 2).to_f
 			b = -t
 			r = (((nx * t) / ny)).to_f
 			l = -r

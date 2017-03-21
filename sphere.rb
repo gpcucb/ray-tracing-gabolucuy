@@ -17,7 +17,7 @@ class Sphere
 		b = d.num_product(2).productoEscalar(ec)
 		c = ec.productoEscalar(ec) - @radius**2
 
-		puts "(A:#{a} B:#{b} C:#{c})"
+		
 		discriminant = b**2 - 4*a*c
 
 	 return Intersection.unsuccessful if (discriminant < 0.0)
