@@ -1,11 +1,12 @@
 require_relative 'intersection.rb'
 class Sphere
 
-	attr_accessor :radius, :position
+	attr_accessor :radius, :position, :color
 
-	def initialize (position,radius)
+	def initialize (position,radius,color)
 		@position = position
 		@radius = radius.to_f
+		@color = color
 	end
 
 	def intersection? (ray,t)
@@ -17,7 +18,7 @@ class Sphere
 		b = d.num_product(2).productoEscalar(ec)
 		c = ec.productoEscalar(ec) - @radius**2
 
-		
+
 		discriminant = b**2 - 4*a*c
 
 	 return Intersection.unsuccessful if (discriminant < 0.0)
