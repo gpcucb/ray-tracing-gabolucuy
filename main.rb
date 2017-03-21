@@ -1,6 +1,7 @@
 require_relative 'vector.rb'
 require_relative 'camera.rb'
 require_relative 'Sphere.rb'
+require_relative 'Triangle.rb'
 require_relative 'Ray.rb'
 require_relative 'ray_tracer.rb'
 require_relative 'sphere.rb'
