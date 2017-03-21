@@ -25,7 +25,7 @@ class Vector
     puts "(#{@x},#{@y},#{z})"
   end
   def  modulo()
-    return Math.sqrt(@x*@x + @y*@y + @z*@z)
+    return Math.sqrt((@x**2) + (@y**2) + (@z**2))
   end
   def productoVectorial(vector)
     i = (@y * vector.z) - (@z * vector.y)
@@ -34,10 +34,7 @@ class Vector
     return Vector.new(i, j, k)
   end
   def productoEscalar(vector)
-    i = @x * vector.x
-    j = @y * vector.y
-    k = @z * vector.z
-    return (i + j + k).to_f
+    return (@x * vector.x + @y * vector.y + @z * vector.z).to_f
   end
   def num_product(num)
 		return Vector.new(@x*num, @y*num, @z*num)

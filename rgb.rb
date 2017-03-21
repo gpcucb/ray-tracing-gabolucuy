@@ -1,5 +1,4 @@
-class rgb
-
+class Rgb
   attr_accessor :red
   attr_accessor :green
   attr_accessor :blue
