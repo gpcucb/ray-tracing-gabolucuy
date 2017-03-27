@@ -30,7 +30,7 @@ class RayTracer < Renderer
     b = Vector.new(0.0,0.0,0.0)
     c = Vector.new(0.0,0.0,560.0)
 
-    @sphere = Sphere.new(position, radius,Rgb.new(1.0,1.0,0))
+    @sphere = Sphere.new(position, radius,Rgb.new(1.0,0,0))
     @triangle = Triangle.new(a,b,c,Rgb.new(1.0,1.0,1.0))
     @objects=[]
     @objects << @sphere
