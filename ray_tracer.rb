@@ -26,9 +26,13 @@ class RayTracer < Renderer
     radius = 120
 
     # Valores del triángulo
-    a = Vector.new(552.0,8,0.0)
-    b = Vector.new(0.0,0.0,0.0)
-    c = Vector.new(0.0,0.0,560.0)
+    # a = Vector.new(550.0,0.0,0.0)
+    # b = Vector.new(110.0,0.0,0.0)
+    # c = Vector.new(0.0,10.0,550.0)
+
+    a = Vector.new(0,0.0,0.0)
+    b = Vector.new(0,100.0,0.0)
+    c = Vector.new(0.0,0.0,100.0)
 
     @sphere = Sphere.new(position, radius,Rgb.new(1.0,0,0))
     @triangle = Triangle.new(a,b,c,Rgb.new(1.0,1.0,1.0))
@@ -54,7 +58,10 @@ class RayTracer < Renderer
       end
     end
     if @obj_int==nil
-      color = Rgb.new(0.0,0.0,0.0)
+      r = 153 / 255
+      g = 102 / 255
+      b = 51 / 255
+      color = Rgb.new(rr5)
     else
       color =  @obj_int.color
     end
