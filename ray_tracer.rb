@@ -52,14 +52,25 @@ class RayTracer < Renderer
   def lambertian_Shading(intersection_point,intersection_normal,ray,light,object)
     n = intersection_normal.normalize
     l= intersection_point.resta_vector(light).normalize
-    kd = object.material.diffuse
-    nl = max(0,n.productoEscalar(l))
-
+    kd = object.material.diffuse #rgb vector
+    nl = n.productoEscalar(l)
+    max = max(0,nl)
+    kdI = kd.productoColor(light.color) #rbg vector * rgb vector
+    return kdi.productoPorNum(max)
+  end
+  def blinn_Phong_Shading(intersection_point,intersection_normal,ray,light,object)
+    n = intersection_normal.normalize
+    l= intersection_point.resta_vector(light).normalize
+    v = ray.position.resta_vector(intersection_point).normalize
+    h = v.suma_vector(l).normalize
+    nh =  n.productoEscalar(h)
+    p = objetc.material.power
+    ks = object.material.specular #rgb vector
+    max = max(0,nh)
+    ksI = ks.productoColor(light.color)
+    return kdi.productoPorNum(max**p)
   end
   def calculate_pixel(i, j)
-    #degradado
-    #color = Rgb.new( 1.0, i.to_f/@nx, j.to_f/@ny)
-    #{red: color.red, green: color.green, blue: color.blue}
     e = @camera.eye
     dir = @camera.calcularDistancia(i,j,@nx,@ny)
     ray = Ray.new(e, dir)
@@ -75,6 +86,8 @@ class RayTracer < Renderer
     if @obj_int==nil
       color = Rgb.new(0,0,0)
     else
+      intersection_point = ray.position.suma_vector(ray.direction.num_product(t))
+      intersection_normal = @obj_int.normal(intersection_point)
       color =  @obj_int.material.diffuse
     end
 
