@@ -15,8 +15,8 @@ class RayTracer < Renderer
     @nx = @width
     @ny = @height
     # Cámara
-    e= Vector.new(278,273,-800)
-    center= Vector.new(278,273,-700)
+    e= Vector.new(0,0,-800)
+    center= Vector.new(0,0,-700)
     up= Vector.new(0,1,0)
     fov= 39.31
     df=0.035
@@ -25,6 +25,12 @@ class RayTracer < Renderer
     specular = Rgb.new(1.0,1.0,1.0)
     power = 60
     reflection = 0.5
+
+    @ambient_light = Rgb.new(0.15,0.15,0.15)
+    # Light Values
+    light_color = Rgb.new(0.8,0.7,0.6)
+    light_position = Vector.new(0.0, 0.0, 200.0)
+    @light = Light.new(light_position,light_color)
 
 
     # Valores de la esfera
@@ -88,7 +94,12 @@ class RayTracer < Renderer
     else
       intersection_point = ray.position.suma_vector(ray.direction.num_product(t))
       intersection_normal = @obj_int.normal(intersection_point)
-      color =  @obj_int.material.diffuse
+
+      lambert = lambertian_Shading(intersection_point,intersection_normal,ray,@light,@obj_int)
+      blinn_Phong = blinn_Phong_Shading(intersection_point,intersection_normal,ray,@light, @obj_int)
+
+      #color =  @obj_int.material.diffuse # 2d
+      color = lambert #lamberr image
     end
 
     return {red: color.red, green: color.green, blue: color.blue}
