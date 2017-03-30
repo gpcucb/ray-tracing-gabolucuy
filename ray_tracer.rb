@@ -3,6 +3,7 @@ require_relative 'camera.rb'
 require_relative 'vector.rb'
 require_relative 'rgb.rb'
 require_relative 'intersection.rb'
+require_relative 'material.rb'
 
 class RayTracer < Renderer
 
@@ -21,26 +22,26 @@ class RayTracer < Renderer
     df=0.035
     @camera = Camera.new(e, center, up, fov, df)
 
+    specular = Rgb.new(1.0,1.0,1.0)
+    power = 60
+    reflection = 0.5
+
+
     # Valores de la esfera
     position = Vector.new(370,120,370)
     radius = 120
 
     # Valores del triángulo
-    # a = Vector.new(550.0,0.0,0.0)
-    # b = Vector.new(110.0,0.0,0.0)
-    # c = Vector.new(0.0,10.0,550.0)
+    a = Vector.new(550.0,0.0,0.0)
+    b = Vector.new(110.0,0.0,0.0)
+    c = Vector.new(0.0,10.0,550.0)
 
-    a = Vector.new(0,0.0,0.0)
-    b = Vector.new(0,100.0,0.0)
-    c = Vector.new(0.0,0.0,100.0)
-
-    @sphere = Sphere.new(position, radius,Rgb.new(1.0,0,0))
-    @triangle = Triangle.new(a,b,c,Rgb.new(1.0,1.0,1.0))
+    @sphere = Sphere.new(position, radius,Material.new(Rgb.new(102.0, 153.0, 0.0),specular,power,reflection))
+    @triangle = Triangle.new(a,b,c,Material.new(Rgb.new(102.0, 153.0, 255.0),specular,power,reflection))
     @objects=[]
     @objects << @sphere
     @objects << @triangle
   end
-
   def calculate_pixel(i, j)
     #degradado
     #color = Rgb.new( 1.0, i.to_f/@nx, j.to_f/@ny)
@@ -58,12 +59,9 @@ class RayTracer < Renderer
       end
     end
     if @obj_int==nil
-      r = 153 / 255
-      g = 102 / 255
-      b = 51 / 255
-      color = Rgb.new(rr5)
+      color = Rgb.new(0,0,0)
     else
-      color =  @obj_int.color
+      color =  @obj_int.material.diffuse
     end
 
     return {red: color.red, green: color.green, blue: color.blue}

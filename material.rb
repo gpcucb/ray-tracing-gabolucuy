@@ -1,8 +1,8 @@
 class Material
-  attr_accessor :diffusse, :specular, :power, :reflection
+  attr_accessor :diffuse, :specular, :power, :reflection
 
-  def initialize(diffusse, specular, power, reflection)
-    @diffusse = diffusse
+  def initialize(diffuse, specular, power, reflection)
+    @diffuse = diffuse
     @specular = specular
     @power = power
     @reflection = reflection
