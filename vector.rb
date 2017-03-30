@@ -39,4 +39,7 @@ class Vector
   def num_product(num)
 		return Vector.new(@x*num, @y*num, @z*num)
 	end
+  def normalize
+    return Vector.new(@a/@a.modulo(),@y/@y.modulo(),@z/@z.modulo())
+  end
 end
