@@ -41,6 +41,9 @@ class Sphere
 
 	 Intersection.new(t, success)
  end
-
+	def normal (intersertion_point)
+			intersection_normal = intersertion_point.resta_vector(@position)
+			return Vector.new(intersection_normal.x / @radius, intersection_normal.y / @radius,intersection_normal.z / @radius)
+	end
 
 end

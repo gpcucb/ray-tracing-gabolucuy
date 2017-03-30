@@ -8,6 +8,9 @@ class Triangle
     @c = c
     @material = material
   end
+  def normal(intersertion_point)
+    eturn (@b.resta_vector(@a)).productoVectorial(@c.resta_vector(@a))
+  end
   def intersection? (ray,t)
     e_ray = ray.position
 		d_ray = ray.direction
