@@ -42,6 +42,20 @@ class RayTracer < Renderer
     @objects << @sphere
     @objects << @triangle
   end
+  def max (num1,num2)
+    if num1>num2
+      return num1
+    else
+      return num2
+    end
+  end
+  def lambertian_Shading(intersection_point,intersection_normal,ray,light,object)
+    n = intersection_normal.normalize
+    l= intersection_point.resta_vector(light).normalize
+    kd = object.material.diffuse
+    nl = max(0,n.productoEscalar(l))
+
+  end
   def calculate_pixel(i, j)
     #degradado
     #color = Rgb.new( 1.0, i.to_f/@nx, j.to_f/@ny)
