@@ -24,7 +24,7 @@ class Vector
   def show
     puts "(#{@x},#{@y},#{z})"
   end
-  def  modulo()
+  def  modulo
     return Math.sqrt((@x**2) + (@y**2) + (@z**2))
   end
   def productoVectorial(vector)
@@ -40,6 +40,6 @@ class Vector
 		return Vector.new(@x*num, @y*num, @z*num)
 	end
   def normalize
-    return Vector.new(@a/@a.modulo(),@y/@y.modulo(),@z/@z.modulo())
+    Vector.new(@x/self.modulo,@y/self.modulo,@z/self.modulo)
   end
 end

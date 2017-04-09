@@ -8,8 +8,29 @@ class Triangle
     @c = c
     @material = material
   end
+  def fix (vector)
+    if vector.x < 0
+      x = (vector.x)*-1
+
+  else
+    x = (vector.x)
+end
+    if vector.y < 0
+      y = (vector.y)*-1
+
+  else
+    y = (vector.y)
+end
+    if vector.z < 0
+      z = (vector.z)*-1
+
+  else
+    z = (vector.z)
+  end
+    return Vector.new(x,y,z)
+  end
   def normal(intersertion_point)
-    eturn (@b.resta_vector(@a)).productoVectorial(@c.resta_vector(@a))
+    return fix((@b.resta_vector(@a)).productoVectorial(@c.resta_vector(@a)))
   end
   def intersection? (ray,t)
     e_ray = ray.position
